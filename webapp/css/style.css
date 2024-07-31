@@ -1,0 +1,27 @@
+/* Asegura que la tabla ocupe toda la altura disponible y centra el contenido verticalmente */
+.sapMListTblCell{
+	vertical-align: middle;
+}
+.sapMListTblCell{
+	text-align: center;
+}
+.sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):focus {
+	  border-color: #0096FF;
+}
+
+.sapContrast.sapMBtn, .sapContrast .sapMBtn {
+  border: 1px solid #88D66C;
+  border-radius: 5px;
+  background: #43515e;
+  padding: 0 0;
+}
+.sapContrast.sapMIBar-CTX .sapMBtn:hover > .sapMBtnHoverable:not(.sapMBtnActive){
+  background-color: transparent;
+  color: #cae4fb;
+}
+.sapContrast.sapMBtnInner, .sapContrast .sapMBtnInner {
+  color: #88D66C;
+}
+.customAxisTitle {
+    font-weight: lighter !important;
+}

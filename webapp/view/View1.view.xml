@@ -1,0 +1,96 @@
+<mvc:View controllerName="DemoDemo.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:viz="sap.viz.ui5.controls" xmlns:vizFeeder="sap.viz.ui5.controls.common.feeds">
+    <App>
+        <pages>
+            <Page title="{i18n>title}" id="page" showHeader="true">
+                <content>
+                    <VBox class="sapUiSmallMargin">
+                        <f:Form id="FormToolbar" editable="true" ariaLabelledBy="Title1">
+                            <f:toolbar>
+                                <Toolbar id="TB1">
+                                    <Title id="Title1" text="Datos de Seleccionado"/>
+                                    <ToolbarSpacer/>
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout>
+                                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4"
+                                    emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer ariaLabelledBy="Title2">
+                                    <f:formElements>
+                                        <f:FormElement label="País">
+                                            <f:fields>
+                                                <Input value="{/formData/NombrePais}" id="pais"/>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Partidos Ganados">
+                                            <f:fields>
+                                                <Input value="{/formData/PartidoGanados}" id="partido-a"/>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Partidos Empatados">
+                                            <f:fields>
+                                                <Input value="{/formData/PartidoEmpatados}" id="partido-b"/>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Partidos Perdidos">
+                                            <f:fields>
+                                                <Input value="{/formData/PartidoPerdidos}" id="partido-c"/>
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+                        <Button text="Agregar País" press="onAddData" icon="sap-icon://add"/>
+                        <Table id="dataTable" items="{/data}">
+                            <columns>
+                                <Column hAlign="Center">
+                                    <Text text=""/>
+                                </Column>
+                                <Column hAlign="Center">
+                                    <Text text="País"/>
+                                </Column>
+                                <Column hAlign="Center">
+                                    <Text text="Partidos Ganados"/>
+                                </Column>
+                                <Column hAlign="Center">
+                                    <Text text="Partidos Empatados"/>
+                                </Column>
+                                <Column hAlign="Center">
+                                    <Text text="Partidos Perdidos"/>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Button press="onDeleteData" icon="sap-icon://decline" class="sapUiTableCell"/>
+                                        <Text text="{NombrePais}" class="sapUiTableCell"/>
+                                        <Text text="{PartidoGanados}" class="sapUiTableCell"/>
+                                        <Text text="{PartidoEmpatados}" class="sapUiTableCell"/>
+                                        <Text text="{PartidoPerdidos}" class="sapUiTableCell"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <viz:VizFrame id="idVizFrame" vizType="bar" height="400px" width="100%">
+                            <viz:feeds>
+                                <vizFeeder:FeedItem uid="valueAxis" type="Measure" values="Ganados"/>
+                                <vizFeeder:FeedItem uid="valueAxis" type="Measure" values="Empatados"/>
+                                <vizFeeder:FeedItem uid="valueAxis" type="Measure" values="Perdidos"/>
+                                <vizFeeder:FeedItem uid="categoryAxis" type="Dimension" values="País"/>
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer/>
+                        <Button text="Mostrar Estadísticas" press="onshowData" id="btnEstadisticas"/>
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
